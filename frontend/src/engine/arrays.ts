@@ -25,6 +25,7 @@ export function createTwoSumTrace(values: number[], target: number): TraceFrame[
   }
   trace.push(frame(trace.length, 5, "No pair adds up to the target.", values, {}, [], { target }, "not-found"));
   return trace;
+}
 
 /** Trace stable in-place Move Zeroes with read/write pointers. */
 export function createMoveZeroesTrace(input: number[]): TraceFrame[] {
