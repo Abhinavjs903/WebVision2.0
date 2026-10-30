@@ -11,7 +11,7 @@ function validateNodes(nodes: ListNode[]): void {
   for (const node of nodes) if (node.next !== null && !ids.has(node.next)) throw new TypeError(`Node ${node.id} points to missing node ${node.next}.`);
 }
 function orderedNodes(nodes: ListNode[], head: string | null): ListNode[] {
-  const byId = new Map(nodes.map(node => [node.id, node]));
+  const byId = new Map<string, ListNode>(nodes.map(node => [node.id, node] as const));
   const ordered: ListNode[] = [];
   const visited = new Set<string>();
   let cursor = head;
@@ -54,14 +54,16 @@ export function createReverseListTrace(input: ListNode[], head: string | null): 
 /** Fast/slow pointer trace. Input is interpreted as a null-terminated chain from head. */
 export function createMiddleNodeTrace(input: ListNode[], head: string | null): TraceFrame[] {
   validateNodes(input);
-  const byId = new Map(input.map(node => [node.id, node]));
+  const byId = new Map<string, ListNode>(input.map(node => [node.id, node] as const));
   const ordered = orderedNodes(input, head);
   const values = ordered.map(node => node.value);
   let slow: string | null = head;
   let fast: string | null = head;
   const trace: TraceFrame[] = [frame(0, 1, "Both pointers begin at the head.", values, { slow: 0, fast: 0 }, values.length ? [0] : [], { slowId: slow, fastId: fast })];
   const indexOf = (id: string | null) => id === null ? null : ordered.findIndex(node => node.id === id);
+  let iterations = 0;
   while (fast !== null && byId.get(fast)?.next !== null && byId.get(fast)?.next !== undefined) {
+    if (iterations++ >= input.length) throw new Error("Middle-node tracing requires an acyclic linked list.");
     slow = byId.get(slow as string)?.next ?? null;
     const fastNext = byId.get(fast)?.next ?? null;
     fast = fastNext === null ? null : byId.get(fastNext)?.next ?? null;
