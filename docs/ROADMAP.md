@@ -20,12 +20,13 @@ This roadmap is dependency-aware: independent algorithm engines and lesson conte
 - Phase 1: introduced a renderer-agnostic trace frame contract and architecture guidance.
 - Phase 2: added reusable trace generators for core array, string and linked-list patterns. Existing binary-search trace remains available.
 - Phase 3: added structured first-pass lessons for Binary Search, Arrays, Strings and Linked Lists.
+- Learning UI: connected the lesson data to the Learn library, topic detail pages and individual lesson routes. Lessons now render objectives, sections, worked examples, complexity analysis and common mistakes.
 
 ## Immediate next work
 
 1. Connect the new trace generators to a shared visualizer/player UI.
 2. Add automated tests for every engine, especially duplicates, empty inputs and pointer boundaries.
 3. Extract route-level screens from `App.tsx` into `pages/` after the visualizer contract is stable.
-4. Add lesson navigation and render `lessons.ts` through reusable learning components.
+4. Add lesson completion tracking and expand the curriculum beyond the four initial topics.
 
 Do not start authentication, AI tutoring or arbitrary code execution before the visual learning loop is reliable.
