@@ -36,3 +36,63 @@
 .lesson-page{gap:22px}.lesson-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:16px;align-items:start}.lesson-article{padding:clamp(20px,4vw,42px);min-width:0}.lesson-objective{padding:17px 19px;background:#302728;border-left:3px solid #c64c43;margin-bottom:30px}.lesson-objective p{font-size:12px;line-height:1.7;color:#f0deda;margin:8px 0 0}.lesson-section{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:0 0 28px;margin-bottom:27px;border-bottom:1px solid #3a3536}.lesson-section-number{width:30px;height:30px;border:1px solid #5a4241;color:#df8178;display:grid;place-items:center;font:600 10px "Space Grotesk"}.lesson-section h2,.lesson-example h2,.lesson-mistakes h2{font:600 20px "Space Grotesk";color:#f0ece7;margin:2px 0 10px}.lesson-section p,.lesson-example>p{font-size:11px;line-height:1.9;color:#bdb3ae;margin:0}.lesson-takeaway{margin-top:15px;padding:13px 15px;background:#292526;border:1px solid #4b3b3b}.lesson-takeaway b{font-size:9px;color:#e18a81;text-transform:uppercase;letter-spacing:1px}.lesson-takeaway p{margin-top:6px;color:#e0d4cf}.lesson-example{padding:0 0 28px;margin-bottom:27px;border-bottom:1px solid #3a3536}.lesson-example h2{margin-top:8px}.example-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}.example-grid>div{background:#292627;border:1px solid #484142;padding:13px;display:grid;gap:9px;min-width:0}.example-grid small,.complexity-pair small{font-size:8px;letter-spacing:1px;color:#d07a71}.example-grid code{font:11px/1.6 "SFMono-Regular",Consolas,monospace;color:#f0ece7;overflow-wrap:anywhere}.complexity-section{margin-bottom:26px}.complexity-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.complexity-pair>div{background:#292627;border:1px solid #484142;padding:13px;display:grid;gap:8px}.complexity-pair b{font:600 17px "Space Grotesk";color:#f0ece7}.lesson-mistakes{padding:0 0 25px;border-bottom:1px solid #3a3536}.lesson-mistakes h2{margin-top:8px}.mistake-row{display:flex;gap:12px;padding:11px 0;border-top:1px solid #393435}.mistake-row span{font:600 10px "Space Grotesk";color:#d65a50}.mistake-row p{font-size:10px;line-height:1.6;color:#c4b9b4;margin:0}.lesson-end-actions{display:flex;justify-content:space-between;gap:10px;margin-top:24px;flex-wrap:wrap}.lesson-sidebar{display:grid;gap:12px;position:sticky;top:75px}.lesson-toc,.lesson-sidebar-card{padding:17px}.toc-row{display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #393435}.toc-row span{font:600 9px "Space Grotesk";color:#d65a50}.toc-row b{font-size:9px;color:#d7ceca;line-height:1.5}.lesson-sidebar-card h3{font:600 17px "Space Grotesk";color:#f0ece7;margin:12px 0 7px}.lesson-sidebar-card p{font-size:9px;line-height:1.7;color:#aaa19d}.lesson-sidebar-card>b{display:block;font-size:9px;color:#d88b82;margin:12px 0}.lesson-sidebar-card .text-link{color:#e18a81}
 @media(max-width:900px){.lesson-layout{grid-template-columns:1fr}.lesson-sidebar{position:static;grid-template-columns:1fr 1fr}.featured-lesson{align-items:flex-start;flex-direction:column}}
 @media(max-width:640px){.learn-overview{padding:15px}.learn-overview strong{font-size:18px}.lesson-index{padding:14px 13px 4px}.lesson-index-row{gap:9px}.lesson-index-copy small{font-size:8px}.lesson-article{padding:18px 15px}.lesson-section{grid-template-columns:27px minmax(0,1fr);gap:9px}.lesson-section-number{width:25px;height:25px}.lesson-section h2,.lesson-example h2,.lesson-mistakes h2{font-size:17px}.lesson-sidebar{grid-template-columns:1fr}.example-grid{grid-template-columns:1fr}.lesson-end-actions{flex-direction:column}.lesson-end-actions .button{width:100%}}
+
+/* Layout corrections — prevent flex overflow, dead mobile drawer and mixed lesson themes */
+.app-shell.theme-dark{display:flex;flex-direction:column;width:100%;min-height:100vh;min-height:100dvh;overflow-x:clip}
+.theme-dark .sidebar{flex:0 0 auto;min-width:0;width:100%;position:sticky;top:0;z-index:40}
+.theme-dark .side-nav{min-width:0;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-width:thin}
+.theme-dark .side-nav .nav-item{flex:0 0 auto}
+.theme-dark .main-area{flex:1 1 auto;min-width:0;width:100%;margin:0}
+.theme-dark .page-content{width:100%;min-width:0}
+.theme-dark .page-heading>div:first-child{min-width:0;max-width:100%}
+.theme-dark .page-heading h1{overflow-wrap:anywhere}
+.theme-dark .lesson-article,.theme-dark .lesson-sidebar,.theme-dark .lesson-layout{min-width:0}
+.theme-dark .lesson-sidebar{top:78px}
+.theme-dark .lesson-index-row,.theme-dark .question-row{min-width:0}
+.theme-dark .lesson-index-copy,.theme-dark .question-main{min-width:0}
+.theme-dark .example-grid code{white-space:pre-wrap}
+.theme-dark .main-area .mobile-only{display:none!important}
+@media(max-width:900px){
+ .theme-dark .sidebar{gap:16px;padding-inline:18px}
+ .theme-dark .brand-lockup{flex:0 0 auto}
+ .theme-dark .side-nav{flex:1 1 auto}
+ .theme-dark .side-nav .nav-item{font-size:9px;padding-inline:9px}
+ .theme-dark .page-content{padding:32px 24px 56px}
+ .theme-dark .lesson-sidebar{position:static}
+}
+@media(max-width:640px){
+ .theme-dark .sidebar{gap:12px;padding-inline:12px}
+ .theme-dark .side-nav .nav-item{font-size:8px;padding-inline:7px}
+ .theme-dark .page-content{padding:24px 15px 42px}
+ .theme-dark .page-heading{gap:12px}
+ .theme-dark .page-heading h1{font-size:clamp(28px,8vw,36px);letter-spacing:-1.2px}
+ .theme-dark .page-heading p{max-width:100%;overflow-wrap:anywhere}
+ .theme-dark .featured-lesson{padding:17px}
+ .theme-dark .lesson-index-row{align-items:flex-start}
+ .theme-dark .lesson-index-row>svg{flex:0 0 auto;margin-top:3px}
+ .theme-dark .lesson-article{padding:18px 14px}
+ .theme-dark .lesson-end-actions{width:100%}
+ .theme-dark .lesson-end-actions a{width:100%}
+}
+/* The theme switch must remain coherent on the optional light palette. */
+.app-shell:not(.theme-dark) .learn-overview{background:#fff;border-color:#e8ebf2;color:#20283a}
+.app-shell:not(.theme-dark) .learn-overview small{color:#7c879d}
+.app-shell:not(.theme-dark) .lesson-index-row{color:#20283a;border-color:#e8ebf2}
+.app-shell:not(.theme-dark) .lesson-index-copy small{color:#7c879d}
+.app-shell:not(.theme-dark) .topic-learning-meta span,.app-shell:not(.theme-dark) .lesson-feature-meta span{color:#6255bd;border-color:#e3e0f7}
+.app-shell:not(.theme-dark) .featured-lesson h2,.app-shell:not(.theme-dark) .lesson-section h2,.app-shell:not(.theme-dark) .lesson-example h2,.app-shell:not(.theme-dark) .lesson-mistakes h2,.app-shell:not(.theme-dark) .lesson-sidebar-card h3{color:#20283a}
+.app-shell:not(.theme-dark) .featured-lesson p,.app-shell:not(.theme-dark) .lesson-section p,.app-shell:not(.theme-dark) .lesson-example>p,.app-shell:not(.theme-dark) .lesson-mistakes p,.app-shell:not(.theme-dark) .lesson-sidebar-card p{color:#667085}
+.app-shell:not(.theme-dark) .lesson-objective{background:#f5f2f1;border-color:#c64c43}
+.app-shell:not(.theme-dark) .lesson-objective p,.app-shell:not(.theme-dark) .lesson-takeaway p{color:#38302e}
+.app-shell:not(.theme-dark) .lesson-section,.app-shell:not(.theme-dark) .lesson-example,.app-shell:not(.theme-dark) .lesson-mistakes{border-color:#e8ebf2}
+.app-shell:not(.theme-dark) .lesson-section-number{border-color:#ead6d3;color:#b7463e}
+.app-shell:not(.theme-dark) .lesson-takeaway{background:#faf5f4;border-color:#ead6d3}
+.app-shell:not(.theme-dark) .lesson-takeaway b,.app-shell:not(.theme-dark) .lesson-sidebar-card>b{color:#b7463e}
+.app-shell:not(.theme-dark) .example-grid>div,.app-shell:not(.theme-dark) .complexity-pair>div{background:#f8f8fa;border-color:#e8ebf2}
+.app-shell:not(.theme-dark) .example-grid code,.app-shell:not(.theme-dark) .complexity-pair b{color:#20283a}
+.app-shell:not(.theme-dark) .example-grid small,.app-shell:not(.theme-dark) .complexity-pair small{color:#b7463e}
+.app-shell:not(.theme-dark) .mistake-row{border-color:#e8ebf2}
+.app-shell:not(.theme-dark) .mistake-row span,.app-shell:not(.theme-dark) .toc-row span{color:#b7463e}
+.app-shell:not(.theme-dark) .toc-row{border-color:#e8ebf2}
+.app-shell:not(.theme-dark) .toc-row b{color:#4b5563}
+.app-shell:not(.theme-dark) .lesson-sidebar-card .text-link{color:#b7463e}
