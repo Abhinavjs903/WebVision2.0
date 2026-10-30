@@ -12,21 +12,19 @@ export function createTwoSumTrace(values: number[], target: number): TraceFrame[
   if (!Number.isFinite(target)) throw new TypeError("Target must be a finite number.");
   const seen = new Map<number, number>();
   const trace: TraceFrame[] = [];
-  values.forEach((value, index) => {
+  for (let index = 0; index < values.length; index += 1) {
+    const value = values[index];
     const complement = target - value;
     const match = seen.get(complement);
     if (match !== undefined) {
       trace.push(frame(trace.length, 4, `Found ${complement} + ${value} = ${target}.`, values, { current: index, match }, [match, index], { value, complement, target, resultLeft: match, resultRight: index }, "found"));
-      return;
+      return trace;
     }
     trace.push(frame(trace.length, 2, `No earlier ${complement} was seen. Store ${value} at index ${index}.`, values, { current: index, match: null }, [index], { value, complement, target, seenCount: seen.size }));
     seen.set(value, index);
-  });
-  if (trace.length === 0 || trace[trace.length - 1].status !== "found") {
-    trace.push(frame(trace.length, 5, "No pair adds up to the target.", values, {}, [], { target }, "not-found"));
   }
+  trace.push(frame(trace.length, 5, "No pair adds up to the target.", values, {}, [], { target }, "not-found"));
   return trace;
-}
 
 /** Trace stable in-place Move Zeroes with read/write pointers. */
 export function createMoveZeroesTrace(input: number[]): TraceFrame[] {
