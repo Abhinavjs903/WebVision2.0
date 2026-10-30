@@ -15,7 +15,7 @@ const nav = [
 const topicPaths = topics.map(t => ({ label: t.name, to: `/learn/${t.id}` }));
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const location = useLocation();
   const navigate = useNavigate();
   const pageTitle = location.pathname === "/" ? "Overview" : location.pathname.includes("questions") ? "Question explorer" : location.pathname.includes("visualize") ? "Visual lab" : "Learn concepts";
