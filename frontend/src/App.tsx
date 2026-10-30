@@ -19,6 +19,7 @@ function App() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const location = useLocation();
   const navigate = useNavigate();
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "auto" }); }, [location.pathname]);
   const pageTitle = location.pathname === "/" ? "Overview" : location.pathname.includes("questions") ? "Question explorer" : location.pathname.includes("visualize") ? "Visual lab" : "Learn concepts";
   return <div className={`app-shell ${theme === "dark" ? "theme-dark" : ""}`}>
     <aside className={`sidebar ${sidebarOpen ? "sidebar-open" : ""}`}>
